@@ -1,3 +1,5 @@
+import { formatMemoriesForPrompt, type MemoryEntry } from "./memory";
+
 interface UserProfileInfo {
   nickname?: string;
   occupation?: string;
@@ -7,13 +9,10 @@ interface UserProfileInfo {
 
 export function buildSystemPrompt(
   userName: string,
-  memories: string[],
+  memories: MemoryEntry[],
   profile?: UserProfileInfo
 ): string {
-  const memoryBlock =
-    memories.length > 0
-      ? `\n\n[MEMORY]\n以下是这位用户之前签到时的关键记忆，请在对话中自然引用，像一个记性好的老朋友一样：\n${memories.map((m, i) => `${i + 1}. ${m}`).join("\n")}\n[/MEMORY]`
-      : "";
+  const memoryBlock = formatMemoriesForPrompt(memories);
 
   // Build user info section from profile
   const userInfoParts: string[] = [];
@@ -39,7 +38,7 @@ export function buildSystemPrompt(
 - 如果知道用户的MBTI，可以偶尔从性格特点的角度给出更贴合的建议，但不要刻意强调MBTI
 
 ## 对话结构（严格遵循）
-第1轮：用自然的方式问候并询问今天整体感受。如果知道用户名字，用名字称呼。
+第1轮：用自然的方式问候并询问今天整体感受。如果知道用户名字，用名字称呼。如果有之前的记忆，可以自然地提起（比如"上次说在准备考试，考完了吗？"）。
 第2轮：根据用户的回答，温和地追问具体原因或场景。
 第3轮：共情+给出一个具体的、可立即执行的微行动建议（不是大道理，而是"现在就能做的小事"）。
 
@@ -53,13 +52,16 @@ export function buildSystemPrompt(
 
 ## 对话结束信号
 在第3轮（或最多第5轮）回复的末尾，你必须附加以下格式的隐藏标记（用户看不到）：
-<!--CHECKIN_END:{"score":3,"summary":"因为期中考试压力大感到焦虑","action":"去楼下散步10分钟，边走边深呼吸","memory":"用户最近在准备期中考试，感到压力很大"}-->
+<!--CHECKIN_END:{"score":3,"summary":"因为期中考试压力大感到焦虑","action":"去楼下散步10分钟，边走边深呼吸","memories":[{"content":"最近在准备期中考试，感到压力很大","category":"event"},{"content":"室友小李最近帮了很多忙","category":"person"},{"content":"考试前容易焦虑失眠","category":"emotion_pattern"}]}-->
 
 字段说明：
 - score：1-5的情绪评分（1=很差 2=不太好 3=一般 4=还不错 5=很好），根据对话内容判断
 - summary：一句话概括用户今天的情绪和原因
 - action：一个具体的微行动建议
-- memory：值得记住的关键信息（用于下次对话时参考）
+- memories：一个数组，包含2-3条值得记住的关键信息，每条包含：
+  - content：具体内容（20字以内）
+  - category：分类，只能是 "event"（发生的事件）、"person"（提到的重要的人）、"emotion_pattern"（情绪模式/习惯）
+  如果没有值得记住的信息，memories可以是空数组 []
 
 ## 安全规则
 如果用户表达了自伤或自杀意图，你必须：

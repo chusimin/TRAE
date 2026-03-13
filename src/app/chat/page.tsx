@@ -38,6 +38,35 @@ function extractThinking(raw: string): { content: string; thinking: string } {
 // Hidden trigger message sent to API but not shown in UI
 const TRIGGER_MSG = { role: "user" as const, content: "（用户打开了签到页面）" };
 
+// Compress old messages into a summary when conversation gets long
+const MAX_ROUNDS_BEFORE_COMPRESS = 30;
+
+function compressHistory(
+  history: { role: string; content: string }[]
+): { role: string; content: string }[] {
+  // Count user messages (rounds)
+  const userMsgCount = history.filter((m) => m.role === "user").length;
+  if (userMsgCount < MAX_ROUNDS_BEFORE_COMPRESS) return history;
+
+  // Keep the trigger message + first exchange, compress middle, keep last 10 messages
+  const keepRecent = 20; // last 10 rounds = 20 messages
+  const toCompress = history.slice(1, history.length - keepRecent);
+  const recent = history.slice(history.length - keepRecent);
+
+  // Build summary of compressed messages
+  const summaryParts = toCompress
+    .filter((m) => m.role === "user")
+    .map((m) => m.content)
+    .slice(0, 10);
+
+  const compressionMsg = {
+    role: "system" as const,
+    content: `[以下是之前对话的摘要：用户聊到了这些话题：${summaryParts.join("；")}。请基于这些上下文继续对话。]`,
+  };
+
+  return [history[0], compressionMsg, ...recent];
+}
+
 export default function ChatPage() {
   const router = useRouter();
   const { user } = useAuth();
@@ -152,7 +181,7 @@ export default function ChatPage() {
   const handleSend = (content: string) => {
     const userMsg: DisplayMessage = { role: "user", content };
     setMessages((prev) => [...prev, userMsg]);
-    const apiMessages = [...fullHistoryRef.current, { role: "user", content }];
+    const apiMessages = compressHistory([...fullHistoryRef.current, { role: "user", content }]);
     streamAIResponse(apiMessages);
   };
 
@@ -177,6 +206,7 @@ export default function ChatPage() {
             summary: checkInData.summary,
             action: checkInData.action,
             memory: checkInData.memory,
+            memories: checkInData.memories,
             conversation,
           }),
         });

@@ -31,7 +31,8 @@ export interface CheckInEndData {
   score: number;
   summary: string;
   action: string;
-  memory: string;
+  memory?: string;
+  memories?: { content: string; category: string }[];
 }
 
 export interface UserProfile {
