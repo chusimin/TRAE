@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>愈见 YuJian — 产品展示</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #A68A6B;
+      --primary-hover: #957B5E;
+      --primary-light: #F0E8DD;
+      --secondary: #C9B99A;
+      --accent: #D98E73;
+      --success: #7EAA82;
+      --warning: #D4A86A;
+      --error: #C27264;
+      --info: #8BA5A0;
+      --bg: #F8F4EE;
+      --bg-card: #FFFCF7;
+      --bg-tertiary: #F0EBE3;
+      --text: #3A3028;
+      --text-secondary: #998C7C;
+      --text-muted: #B8AD9E;
+      --border: #E5DDD2;
+      --divider: #EDE7DD;
+      --shadow-sm: 0 1px 3px rgba(166,138,107,0.04);
+      --shadow-md: 0 4px 12px rgba(166,138,107,0.08);
+      --shadow-lg: 0 8px 24px rgba(166,138,107,0.1);
+      --shadow-xl: 0 16px 48px rgba(166,138,107,0.12);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Noto Sans SC', -apple-system, 'PingFang SC', sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ====== TOP NAV ====== */
+    .top-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(248,244,238,0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--divider);
+      padding: 14px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .top-bar .logo {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: 0.5px;
+    }
+    .top-bar .logo span { font-weight: 300; color: var(--text-muted); margin-left: 6px; font-size: 0.85rem; }
+    .top-bar .cta-link {
+      font-size: 0.85rem;
+      color: var(--bg-card);
+      background: var(--primary);
+      padding: 8px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.25s;
+    }
+    .top-bar .cta-link:hover { background: var(--primary-hover); }
+
+    /* ====== LAYOUT ====== */
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section {
+      padding: 80px 0;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--primary);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+
+    .section-desc {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      max-width: 640px;
+      line-height: 1.8;
+    }
+
+    /* ====== HERO ====== */
+    .hero {
+      padding-top: 140px;
+      padding-bottom: 80px;
+      text-align: center;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: var(--primary-light);
+      color: var(--primary);
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 6px 16px;
+      border-radius: 999px;
+      margin-bottom: 28px;
+    }
+    .hero h1 {
+      font-size: 3.2rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero .slogan {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      font-weight: 300;
+      margin-bottom: 32px;
+    }
+    .hero .philosophy {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin: 0 auto 36px;
+      line-height: 1.8;
+      border-left: 3px solid var(--accent);
+      padding-left: 16px;
+      text-align: left;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .hero-actions a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 12px 28px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: all 0.25s;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: var(--bg-card);
+    }
+    .btn-primary:hover { background: var(--primary-hover); transform: translateY(-1px); box-shadow: var(--shadow-lg); }
+    .btn-secondary {
+      background: transparent;
+      color: var(--primary);
+      border: 1.5px solid var(--secondary);
+    }
+    .btn-secondary:hover { background: var(--primary-light); }
+
+    /* ====== CARDS GRID ====== */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s;
+    }
+    .card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      margin-bottom: 16px;
+    }
+    .card h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .card p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* ====== MARKET / DATA SECTION ====== */
+    .market-section {
+      background: var(--bg-card);
+      border-top: 1px solid var(--divider);
+      border-bottom: 1px solid var(--divider);
+    }
+
+    .data-highlight-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-top: 40px;
+      margin-bottom: 48px;
+    }
+    .data-highlight {
+      text-align: center;
+      padding: 24px 16px;
+      background: var(--bg);
+      border-radius: 12px;
+    }
+    .data-highlight .number {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1.1;
+    }
+    .data-highlight .unit {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--primary);
+    }
+    .data-highlight .label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    .insight-list {
+      list-style: none;
+      display: grid;
+      gap: 16px;
+    }
+    .insight-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 20px 24px;
+      background: var(--bg);
+      border-radius: 10px;
+      border-left: 3px solid var(--accent);
+    }
+    .insight-item .insight-icon {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+    }
+    .insight-item .insight-content h4 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .insight-item .insight-content p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+    .insight-item .source {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* ====== DECISION SECTION ====== */
+    .decision-cards {
+      display: grid;
+      gap: 24px;
+      margin-top: 40px;
+    }
+    .decision-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 260px;
+    }
+    .decision-card:nth-child(even) {
+      direction: rtl;
+    }
+    .decision-card:nth-child(even) > * {
+      direction: ltr;
+    }
+    .decision-text {
+      padding: 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .decision-number {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .decision-text h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+    .decision-text .chose {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+    .decision-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .tag-yes {
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: rgba(126,170,130,0.12);
+      color: var(--success);
+      font-weight: 500;
+    }
+    .tag-no {
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: rgba(194,114,100,0.1);
+      color: var(--error);
+      font-weight: 500;
+      text-decoration: line-through;
+    }
+    .decision-visual {
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* visual illustrations */
+    .vis-checkin {
+      width: 100%;
+      max-width: 260px;
+    }
+    .vis-checkin .msg {
+      padding: 12px 16px;
+      border-radius: 4px 16px 16px 16px;
+      font-size: 0.8rem;
+      margin-bottom: 10px;
+      line-height: 1.6;
+      animation: fadeUp 0.6s ease both;
+    }
+    .vis-checkin .msg-ai {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      margin-right: 20px;
+    }
+    .vis-checkin .msg-user {
+      background: var(--primary);
+      color: var(--bg-card);
+      margin-left: 20px;
+      border-radius: 16px 4px 16px 16px;
+      text-align: right;
+    }
+    .vis-checkin .msg:nth-child(1) { animation-delay: 0.1s; }
+    .vis-checkin .msg:nth-child(2) { animation-delay: 0.3s; }
+    .vis-checkin .msg:nth-child(3) { animation-delay: 0.5s; }
+    .vis-checkin .msg:nth-child(4) { animation-delay: 0.7s; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* mini chart */
+    .vis-chart {
+      width: 100%;
+      max-width: 280px;
+    }
+    .vis-chart-header {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      font-weight: 500;
+    }
+    .vis-chart svg { width: 100%; height: auto; }
+    .vis-chart .tag-row {
+      display: flex;
+      gap: 6px;
+      margin-top: 14px;
+      flex-wrap: wrap;
+    }
+    .emotion-tag {
+      font-size: 0.7rem;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: var(--primary-light);
+      color: var(--primary);
+      font-weight: 500;
+    }
+    .micro-action {
+      margin-top: 12px;
+      padding: 10px 14px;
+      background: rgba(126,170,130,0.1);
+      border-radius: 8px;
+      font-size: 0.78rem;
+      color: var(--success);
+      line-height: 1.5;
+    }
+
+    /* memory visual */
+    .vis-memory {
+      width: 100%;
+      max-width: 260px;
+    }
+    .memory-item {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      margin-bottom: 14px;
+      animation: fadeUp 0.5s ease both;
+    }
+    .memory-item:nth-child(1) { animation-delay: 0.1s; }
+    .memory-item:nth-child(2) { animation-delay: 0.3s; }
+    .memory-item:nth-child(3) { animation-delay: 0.5s; }
+    .memory-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      margin-top: 6px;
+      flex-shrink: 0;
+    }
+    .memory-text {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    .memory-text strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+    .memory-arrow {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 1.2rem;
+      margin: 4px 0 14px;
+    }
+    .memory-result {
+      padding: 12px 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      font-size: 0.8rem;
+      color: var(--text);
+      line-height: 1.6;
+      animation: fadeUp 0.5s ease 0.7s both;
+    }
+
+    /* ====== TECH SECTION ====== */
+    .tech-section {
+      background: var(--bg-card);
+      border-top: 1px solid var(--divider);
+      border-bottom: 1px solid var(--divider);
+    }
+
+    .tech-stack {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 40px;
+      margin-bottom: 48px;
+    }
+    .tech-item {
+      text-align: center;
+      padding: 24px 16px;
+      background: var(--bg);
+      border-radius: 10px;
+    }
+    .tech-item .tech-icon {
+      font-size: 1.6rem;
+      margin-bottom: 10px;
+    }
+    .tech-item .tech-name {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .tech-item .tech-role {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* Architecture diagram */
+    .arch-diagram {
+      background: var(--bg);
+      border-radius: 14px;
+      padding: 40px 32px;
+      margin-top: 32px;
+    }
+    .arch-flow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+    .arch-node {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 24px;
+      min-width: 120px;
+    }
+    .arch-node-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      box-shadow: var(--shadow-md);
+    }
+    .arch-node-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+    .arch-node-sub {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+    .arch-arrow {
+      font-size: 1.2rem;
+      color: var(--secondary);
+      padding: 0 4px;
+    }
+    .arch-data-label {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: -4px;
+    }
+
+    /* ====== TIMELINE ====== */
+    .timeline-wrapper {
+      overflow-x: auto;
+      margin-top: 40px;
+      padding-bottom: 16px;
+      -webkit-overflow-scrolling: touch;
+    }
+    .timeline {
+      display: flex;
+      gap: 0;
+      min-width: 900px;
+      position: relative;
+      padding: 20px 0 40px;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 50px;
+      left: 40px;
+      right: 40px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--secondary), var(--accent));
+      border-radius: 2px;
+    }
+    .timeline-step {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      min-width: 140px;
+    }
+    .timeline-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 3px solid var(--bg);
+      box-shadow: 0 0 0 2px var(--accent);
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 2;
+    }
+    .timeline-step:first-child .timeline-dot { background: var(--primary); box-shadow: 0 0 0 2px var(--primary); }
+    .timeline-step:last-child .timeline-dot { background: var(--success); box-shadow: 0 0 0 2px var(--success); }
+    .timeline-content {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      width: 140px;
+      box-shadow: var(--shadow-sm);
+    }
+    .timeline-content h4 {
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+    .timeline-content p {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .method-highlight {
+      margin-top: 40px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 32px;
+      text-align: center;
+    }
+    .method-highlight .big-text {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .method-highlight .big-text em {
+      font-style: normal;
+      color: var(--accent);
+    }
+    .method-highlight p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      max-width: 560px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    /* ====== ROADMAP ====== */
+    .roadmap-section {
+      background: var(--bg-card);
+      border-top: 1px solid var(--divider);
+      border-bottom: 1px solid var(--divider);
+    }
+    .roadmap-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 40px;
+    }
+    .roadmap-card {
+      padding: 24px;
+      background: var(--bg);
+      border-radius: 12px;
+    }
+    .roadmap-card h4 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .roadmap-card p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+    .priority-tag {
+      font-size: 0.65rem;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+    .priority-p1 { background: rgba(217,142,115,0.15); color: var(--accent); }
+    .priority-p2 { background: rgba(212,168,106,0.15); color: var(--warning); }
+
+    .vision-card {
+      margin-top: 32px;
+      padding: 32px;
+      background: linear-gradient(135deg, var(--primary-light), rgba(217,142,115,0.08));
+      border-radius: 14px;
+      text-align: center;
+    }
+    .vision-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--primary);
+    }
+    .vision-card p {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      max-width: 520px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    /* ====== FOOTER ====== */
+    .footer {
+      padding: 48px 0;
+      text-align: center;
+    }
+    .footer p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+    .footer a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    /* ====== RESPONSIVE ====== */
+    @media (max-width: 768px) {
+      .hero { padding-top: 120px; padding-bottom: 48px; }
+      .hero h1 { font-size: 2.2rem; }
+      .hero .slogan { font-size: 1.05rem; }
+
+      .data-highlight-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .decision-card {
+        grid-template-columns: 1fr;
+      }
+      .decision-card:nth-child(even) {
+        direction: ltr;
+      }
+      .decision-visual {
+        min-height: 200px;
+      }
+
+      .tech-stack {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .arch-flow {
+        flex-direction: column;
+      }
+      .arch-arrow {
+        transform: rotate(90deg);
+      }
+
+      .timeline {
+        min-width: 700px;
+      }
+
+      .roadmap-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title {
+        font-size: 1.4rem;
+      }
+
+      .method-highlight .big-text {
+        font-size: 1.3rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .top-bar { padding: 10px 16px; }
+      .container { padding: 0 16px; }
+      section { padding: 56px 0; }
+      .hero h1 { font-size: 1.8rem; }
+      .data-highlight .number { font-size: 1.6rem; }
+    }
+
+    /* ====== SCROLL ANIMATION ====== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+<!-- Top Bar -->
+<div class="top-bar">
+  <div class="logo">愈见 <span>YuJian</span></div>
+  <a class="cta-link" href="https://yujian-tau.vercel.app" target="_blank">体验产品 &rarr;</a>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge">AI Product Showcase</div>
+    <h1>愈见</h1>
+    <p class="slogan">每天3分钟，看见更好的自己</p>
+    <p class="philosophy">
+      不做情感绑架式的 AI 陪伴。<br>
+      不靠无尽的闲聊锁住用户。<br>
+      而是用结构化的每日签到，让用户<strong>真正变好</strong>——然后离开。
+    </p>
+    <div class="hero-actions">
+      <a href="https://yujian-tau.vercel.app" target="_blank" class="btn-primary">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+        在线体验
+      </a>
+      <a href="#market" class="btn-secondary">查看完整方案 &darr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- Market Insight -->
+<section class="market-section" id="market">
+  <div class="container">
+    <div class="fade-in">
+      <div class="section-label">Market Insight</div>
+      <div class="section-title">为什么是「情绪疗愈」，而不是「AI 陪聊」？</div>
+      <p class="section-desc">不是拍脑袋选的方向。这是对 30+ 篇行业报告和 200+ 条用户声音的调研结论。</p>
+    </div>
+
+    <div class="data-highlight-grid fade-in">
+      <div class="data-highlight">
+        <div class="number">400<span class="unit">亿美元</span></div>
+        <div class="label">AI情感陪伴市场规模预估</div>
+      </div>
+      <div class="data-highlight">
+        <div class="number">1-2<span class="unit">个月</span></div>
+        <div class="label">多数AI陪伴产品的用户流失周期</div>
+      </div>
+      <div class="data-highlight">
+        <div class="number">63<span class="unit">%</span></div>
+        <div class="label">大学生报告焦虑/情绪困扰</div>
+      </div>
+      <div class="data-highlight">
+        <div class="number">18-24<span class="unit">岁</span></div>
+        <div class="label">核心付费群体：年轻女性用户</div>
+      </div>
+    </div>
+
+    <ul class="insight-list fade-in">
+      <li class="insight-item">
+        <div class="insight-icon" style="background:rgba(194,114,100,0.1);">
+          <span style="color:var(--error);">!</span>
+        </div>
+        <div class="insight-content">
+          <h4>行业最大痛点：留存极低</h4>
+          <p>AI陪伴赛道获客容易、留存极难。用户新鲜感消退后，找不到持续使用的理由。Character.AI、星野等头部产品面临同样困境——用户1-2个月后大量流失。</p>
+          <div class="source">来源：Grand View Research 2024 / 多篇行业分析</div>
+        </div>
+      </li>
+      <li class="insight-item">
+        <div class="insight-icon" style="background:rgba(212,168,106,0.1);">
+          <span style="color:var(--warning);">⚠</span>
+        </div>
+        <div class="insight-content">
+          <h4>越聊越孤独：MIT 研究的警示</h4>
+          <p>MIT Media Lab 研究发现，重度使用 AI 陪伴的用户，孤独感反而加剧。依赖式的"无限续杯陪聊"不是解法，反而是问题本身。</p>
+          <div class="source">来源：MIT Media Lab 2024</div>
+        </div>
+      </li>
+      <li class="insight-item">
+        <div class="insight-icon" style="background:rgba(126,170,130,0.1);">
+          <span style="color:var(--success);">→</span>
+        </div>
+        <div class="insight-content">
+          <h4>垂直细分才能存活</h4>
+          <p>通用陪聊正在同质化死亡。存活下来的产品都在找垂直切入点——「情绪管理 + 可量化成长」是一个被验证的需求、却没有好产品的方向。</p>
+          <div class="source">来源：Reddit r/ChatGPT + 小红书用户调研</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- Product Decisions -->
+<section id="product">
+  <div class="container">
+    <div class="fade-in">
+      <div class="section-label">Product Design</div>
+      <div class="section-title">三个核心设计决策</div>
+      <p class="section-desc">每个决策都回答同一个问题：如何让用户因为「变好了」而留下，而不是因为「离不开」而留下？</p>
+    </div>
+
+    <div class="decision-cards">
+      <!-- Decision 1 -->
+      <div class="decision-card fade-in">
+        <div class="decision-text">
+          <div class="decision-number">Decision 01</div>
+          <h3>结构化签到对话，<br>不是自由聊天</h3>
+          <p class="chose">每天一次、3-5分钟的引导式签到。AI 按「识别情绪 → 挖原因 → 微行动建议」三步走，不是漫无目的的闲聊。</p>
+          <div class="decision-tags">
+            <span class="tag-yes">选了：3步结构化签到</span>
+            <span class="tag-no">没选：无限自由聊天</span>
+          </div>
+          <p class="chose" style="margin-top:12px; font-size:0.83rem;">
+            <strong>为什么：</strong>自由聊天导致"不知道聊什么→冷场→流失"。结构化设计降低使用门槛，3分钟就能完成，形成习惯而非依赖。
+          </p>
+        </div>
+        <div class="decision-visual">
+          <div class="vis-checkin">
+            <div class="msg msg-ai">今天过得怎么样？有什么想聊的吗？</div>
+            <div class="msg msg-user">有点焦虑，明天有presentation</div>
+            <div class="msg msg-ai">presentation 确实容易紧张。是担心内容没准备好，还是怕上台说不好？</div>
+            <div class="msg msg-ai" style="background:rgba(126,170,130,0.08); border-color:var(--success);">
+              试试现在深呼吸3次：吸4秒-hold 4秒-呼6秒。今天辛苦了，明天见 ✨
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Decision 2 -->
+      <div class="decision-card fade-in">
+        <div class="decision-text">
+          <div class="decision-number">Decision 02</div>
+          <h3>成长可见化，<br>不是情感锁定</h3>
+          <p class="chose">每次签到自动生成情绪评分，汇成情绪曲线。用户留下来的理由是「看到自己在变好」，而不是「离不开 AI」。</p>
+          <div class="decision-tags">
+            <span class="tag-yes">选了：情绪曲线 + 微行动</span>
+            <span class="tag-no">没选：无限续杯式陪聊</span>
+          </div>
+          <p class="chose" style="margin-top:12px; font-size:0.83rem;">
+            <strong>为什么：</strong>健身教练模式，不是奶茶店模式。让用户的情绪变化「可见」「可量化」，驱动持续使用的是成就感而非依赖。
+          </p>
+        </div>
+        <div class="decision-visual">
+          <div class="vis-chart">
+            <div class="vis-chart-header">最近 7 天情绪曲线</div>
+            <svg viewBox="0 0 280 120" fill="none">
+              <!-- grid -->
+              <line x1="0" y1="24" x2="280" y2="24" stroke="#EDE7DD" stroke-dasharray="4"/>
+              <line x1="0" y1="60" x2="280" y2="60" stroke="#EDE7DD" stroke-dasharray="4"/>
+              <line x1="0" y1="96" x2="280" y2="96" stroke="#EDE7DD" stroke-dasharray="4"/>
+              <!-- area -->
+              <path d="M0,84 L46,72 L93,90 L140,60 L186,48 L233,54 L280,36 L280,120 L0,120 Z" fill="url(#areaGrad)" opacity="0.3"/>
+              <!-- line -->
+              <polyline points="0,84 46,72 93,90 140,60 186,48 233,54 280,36" stroke="#D98E73" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <!-- dots -->
+              <circle cx="0" cy="84" r="4" fill="#D98E73"/>
+              <circle cx="46" cy="72" r="4" fill="#D98E73"/>
+              <circle cx="93" cy="90" r="4" fill="#D98E73"/>
+              <circle cx="140" cy="60" r="4" fill="#A68A6B"/>
+              <circle cx="186" cy="48" r="4" fill="#A68A6B"/>
+              <circle cx="233" cy="54" r="4" fill="#A68A6B"/>
+              <circle cx="280" cy="36" r="5" fill="#7EAA82" stroke="#fff" stroke-width="2"/>
+              <defs>
+                <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#D98E73" stop-opacity="0.3"/>
+                  <stop offset="100%" stop-color="#D98E73" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+            </svg>
+            <div class="tag-row">
+              <span class="emotion-tag">焦虑 ×3</span>
+              <span class="emotion-tag">平静 ×2</span>
+              <span class="emotion-tag" style="background:rgba(126,170,130,0.12);color:var(--success);">愉悦 ×2</span>
+            </div>
+            <div class="micro-action">
+              今日微行动：给一个你想念的人发条消息
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Decision 3 -->
+      <div class="decision-card fade-in">
+        <div class="decision-text">
+          <div class="decision-number">Decision 03</div>
+          <h3>上下文记忆，<br>AI 记住你说过的事</h3>
+          <p class="chose">每次签到自动提取关键事件（如"明天有 presentation"），下次对话自然引用——"上次你说的 presentation 怎么样了？"</p>
+          <div class="decision-tags">
+            <span class="tag-yes">选了：自动提取 + 跨会话记忆</span>
+            <span class="tag-no">没选：每次都从零开始</span>
+          </div>
+          <p class="chose" style="margin-top:12px; font-size:0.83rem;">
+            <strong>为什么：</strong>记忆是 AI 陪伴产品的分水岭。Nomi 的测评数据证明，有记忆的 AI 留存远高于无记忆的竞品。这是"它真的在乎我"的关键感受。
+          </p>
+        </div>
+        <div class="decision-visual">
+          <div class="vis-memory">
+            <div class="memory-item">
+              <div class="memory-dot"></div>
+              <div class="memory-text"><strong>3天前：</strong>明天有重要的 presentation，很紧张</div>
+            </div>
+            <div class="memory-item">
+              <div class="memory-dot" style="background:var(--secondary);"></div>
+              <div class="memory-text"><strong>5天前：</strong>和室友因为卫生问题吵架了</div>
+            </div>
+            <div class="memory-item">
+              <div class="memory-dot" style="background:var(--info);"></div>
+              <div class="memory-text"><strong>1周前：</strong>期末复习压力大，每天只睡5小时</div>
+            </div>
+            <div class="memory-arrow">↓</div>
+            <div class="memory-result">
+              "上次你提到 presentation 让你很紧张，后来怎么样了？还顺利吗？"
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Tech Section -->
+<section class="tech-section" id="tech">
+  <div class="container">
+    <div class="fade-in">
+      <div class="section-label">Tech Implementation</div>
+      <div class="section-title">技术实现</div>
+      <p class="section-desc">不堆砌技术，只选对的。每一项选型都有明确的理由。</p>
+    </div>
+
+    <div class="tech-stack fade-in">
+      <div class="tech-item">
+        <div class="tech-icon">▲</div>
+        <div class="tech-name">Next.js + TypeScript</div>
+        <div class="tech-role">全栈框架 / SSR + API Routes</div>
+      </div>
+      <div class="tech-item">
+        <div class="tech-icon">🌙</div>
+        <div class="tech-name">Kimi K2.5</div>
+        <div class="tech-role">国内可用 / 中文强 / 推理能力</div>
+      </div>
+      <div class="tech-item">
+        <div class="tech-icon">⚡</div>
+        <div class="tech-name">Supabase</div>
+        <div class="tech-role">Auth + PostgreSQL + RLS</div>
+      </div>
+      <div class="tech-item">
+        <div class="tech-icon">◆</div>
+        <div class="tech-name">Vercel</div>
+        <div class="tech-role">一键部署 / 全球 CDN</div>
+      </div>
+    </div>
+
+    <div class="arch-diagram fade-in">
+      <div style="text-align:center; margin-bottom:24px;">
+        <span style="font-size:0.85rem; font-weight:600; color:var(--text);">数据流架构</span>
+      </div>
+      <div class="arch-flow">
+        <div class="arch-node">
+          <div class="arch-node-icon" style="background:var(--primary-light);">👤</div>
+          <div class="arch-node-label">用户</div>
+          <div class="arch-node-sub">React 前端</div>
+        </div>
+        <div style="text-align:center;">
+          <div class="arch-arrow">→</div>
+          <div class="arch-data-label">用户消息</div>
+        </div>
+        <div class="arch-node">
+          <div class="arch-node-icon" style="background:rgba(217,142,115,0.12);">⚙</div>
+          <div class="arch-node-label">API Route</div>
+          <div class="arch-node-sub">Prompt + 记忆组装</div>
+        </div>
+        <div style="text-align:center;">
+          <div class="arch-arrow">→</div>
+          <div class="arch-data-label">SSE 流式请求</div>
+        </div>
+        <div class="arch-node">
+          <div class="arch-node-icon" style="background:rgba(212,168,106,0.12);">🧠</div>
+          <div class="arch-node-label">Kimi K2.5</div>
+          <div class="arch-node-sub">推理 + 思考链</div>
+        </div>
+        <div style="text-align:center;">
+          <div class="arch-arrow">←</div>
+          <div class="arch-data-label">流式回复</div>
+        </div>
+        <div class="arch-node">
+          <div class="arch-node-icon" style="background:rgba(126,170,130,0.12);">⚙</div>
+          <div class="arch-node-label">API Route</div>
+          <div class="arch-node-sub">解析 + 转发</div>
+        </div>
+        <div style="text-align:center;">
+          <div class="arch-arrow">→</div>
+          <div class="arch-data-label">签到数据</div>
+        </div>
+        <div class="arch-node">
+          <div class="arch-node-icon" style="background:rgba(139,165,160,0.12);">🗄</div>
+          <div class="arch-node-label">Supabase</div>
+          <div class="arch-node-sub">签到 + 记忆存储</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Process Timeline -->
+<section id="process">
+  <div class="container">
+    <div class="fade-in">
+      <div class="section-label">Build Process</div>
+      <div class="section-title">从 0 到 1 的构建过程</div>
+      <p class="section-desc">一个 AI PM 用 vibe coding 方法论，完成产品全链路交付。</p>
+    </div>
+
+    <div class="timeline-wrapper fade-in">
+      <div class="timeline">
+        <div class="timeline-step">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h4>市场调研</h4>
+            <p>30+ 篇报告精读，三平台用户声音采集，输出洞察报告</p>
+          </div>
+        </div>
+        <div class="timeline-step">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h4>PRD 共创</h4>
+            <p>用自研 Claude Skill 引导式共创，6轮对话完成产品规范</p>
+          </div>
+        </div>
+        <div class="timeline-step">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h4>MVP 裁剪</h4>
+            <p>砍掉社区、推送、标签系统，聚焦「签到→曲线」核心闭环</p>
+          </div>
+        </div>
+        <div class="timeline-step">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h4>技术选型 & 设计</h4>
+            <p>Next.js + Supabase + Kimi，沙丘日落风格定调</p>
+          </div>
+        </div>
+        <div class="timeline-step">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h4>Claude Code 实现</h4>
+            <p>分模块喂 PRD 给 AI 编程 Agent，逐步实现全部功能</p>
+          </div>
+        </div>
+        <div class="timeline-step">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h4>部署上线</h4>
+            <p>Vercel 一键部署，Google OAuth 接入，线上可用</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="method-highlight fade-in">
+      <div class="big-text">一个非技术背景的 AI PM，用 <em>Vibe Coding</em> 方法论</div>
+      <p>
+        从市场调研到可用产品上线的全链路交付。<br>
+        核心方法：调研驱动需求 → PRD 拆解为 Agent 可执行的模块 → AI 编程逐步实现 → 快速迭代。<br>
+        证明了「AI PM + vibe coding」可以极大降低从想法到产品的门槛。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Roadmap -->
+<section class="roadmap-section" id="roadmap">
+  <div class="container">
+    <div class="fade-in">
+      <div class="section-label">Roadmap</div>
+      <div class="section-title">迭代规划</div>
+      <p class="section-desc">V1 验证核心闭环，V2 深化数据价值，长期打造情绪健康基础设施。</p>
+    </div>
+
+    <div class="roadmap-grid fade-in">
+      <div class="roadmap-card">
+        <h4><span class="priority-tag priority-p1">P1</span> 情绪标签分类</h4>
+        <p>AI 签到时自动打标签（焦虑 / 空虚 / 低落 / 平静 / 愉悦），情绪曲线支持按标签筛选，让用户看到自己的情绪模式。</p>
+      </div>
+      <div class="roadmap-card">
+        <h4><span class="priority-tag priority-p1">P1</span> 情绪周报 & 月度回顾</h4>
+        <p>AI 生成周度/月度情绪总结：高频事件、情绪模式、变化趋势。让「变好」不只是感觉，而是有据可查。</p>
+      </div>
+      <div class="roadmap-card">
+        <h4><span class="priority-tag priority-p2">P2</span> 情绪热力图</h4>
+        <p>类似 GitHub contribution graph，用颜色深浅展示每天的情绪状态。一眼看到自己的整体节奏和波动。</p>
+      </div>
+      <div class="roadmap-card">
+        <h4><span class="priority-tag priority-p2">P2</span> 匿名情绪共鸣</h4>
+        <p>"和你情绪相似的人今天在做什么"——轻量级的匿名社区，降低孤独感，但不引入社交压力。</p>
+      </div>
+    </div>
+
+    <div class="vision-card fade-in">
+      <h3>从工具到伙伴</h3>
+      <p>
+        愈见的终极愿景不是一个聊天工具，而是一个个人情绪健康数据平台。<br>
+        不只记录情绪，而是真正推动用户走向更好的生活。<br>
+        <strong>关键原则始终不变：帮用户变好，而非让用户依赖。</strong>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <p>
+      <strong>愈见 YuJian</strong> &mdash; 面向大学生的 AI 情绪疗愈助手<br>
+      <a href="https://yujian-tau.vercel.app" target="_blank">yujian-tau.vercel.app</a><br><br>
+      本展示页由产品设计者创建，展示从市场调研到产品上线的完整思考过程。
+    </p>
+  </div>
+</footer>
+
+<!-- Scroll Animation -->
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
